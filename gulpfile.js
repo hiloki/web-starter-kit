@@ -29,14 +29,14 @@ var pagespeed = require('psi');
 var reload = browserSync.reload;
 
 var AUTOPREFIXER_BROWSERS = [
-  'ie >= 10',
+  'ie >= 9',
   'ie_mob >= 10',
   'ff >= 30',
   'chrome >= 34',
   'safari >= 7',
   'opera >= 23',
-  'ios >= 7',
-  'android >= 4.4',
+  'ios >= 6',
+  'android >= 4.3',
   'bb >= 10'
 ];
 
@@ -84,8 +84,7 @@ gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
     'app/styles/*.scss',
-    'app/styles/**/*.css',
-    'app/styles/components/components.scss'
+    'app/styles/**/*.css'
   ])
     .pipe($.changed('styles', {extension: '.scss'}))
     .pipe($.sass({
@@ -113,8 +112,7 @@ gulp.task('html', function () {
     // the next line to only include styles your project uses.
     .pipe($.if('*.css', $.uncss({
       html: [
-        'app/index.html',
-        'app/styleguide.html'
+        'app/index.html'
       ],
       // CSS Selectors for UnCSS to ignore
       ignore: [
